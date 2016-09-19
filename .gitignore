@@ -1,2 +1,6 @@
 build/
 resources/
+.settings/
+.classpath
+.project
+.tern-project
