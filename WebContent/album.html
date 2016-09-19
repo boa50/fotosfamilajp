@@ -1,0 +1,11 @@
+<h1 class="page-header jumbotron">Albuns</h1>
+<div ng-repeat="album in lista">
+	<div class="col-md-2 col-xs-3">
+		<div class="thumbnail">
+			<a ng-href="./#/album/{{album.id}}">
+				<img ng-src="{{album.urlImagemCapa}}" />
+			</a>
+			<span class="caption">{{album.nome}}</span>
+		</div>
+	</div>
+</div>

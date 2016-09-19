@@ -1,0 +1,51 @@
+<h1 class="page-header jumbotron">Nome do Album</h1>
+<div ng-repeat="foto in lista">
+	<div id="links">
+		<div class="col-md-2 col-xs-3">			
+			<a class="thumbnail" ng-href="{{foto.urlImagem}}" data-gallery>
+				<div style="height: 150px; width: 150px; overflow: hidden;">
+					<div ng-if="foto.ajustarThumbnail == 'true'">
+						<img style="margin-left: -100px;" ng-src="{{foto.urlThumbnail}}" />
+					</div>
+					<div ng-if="foto.ajustarThumbnail == 'false'">
+						<img ng-src="{{foto.urlThumbnail}}" />
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+    <!-- Fixed navbar -->
+<!--     <nav class="navbar navbar-default navbar-fixed-top"> -->
+<!--       <div class="container"> -->
+<!--         <div class="navbar-header"> -->
+<!--           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> -->
+<!--             <span class="sr-only">Toggle navigation</span> -->
+<!--             <span class="icon-bar"></span> -->
+<!--             <span class="icon-bar"></span> -->
+<!--             <span class="icon-bar"></span> -->
+<!--           </button> -->
+<!--           <a class="navbar-brand" href="#">Project name</a> -->
+<!--         </div> -->
+<!--         <div id="navbar" class="navbar-collapse collapse"> -->
+<!--           <ul class="nav navbar-nav"> -->
+<!--             <li class="dropdown" uib-dropdown is-open="status.isopen"> -->
+<!-- 		      <a id="single-button" role="button" class="dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled"> -->
+<!-- 		        Albuns <span class="caret"></span> -->
+<!-- 		      </a> -->
+<!-- 		      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button"> -->
+<!-- 		        <li role="menuitem"><a href="#">Action</a></li> -->
+<!-- 		        <li role="menuitem"><a href="#">Another action</a></li> -->
+<!-- 		        <li role="menuitem"><a href="#">Something else here</a></li> -->
+<!-- 		        <li class="divider"></li> -->
+<!-- 		        <li role="menuitem"><a href="#">Separated link</a></li> -->
+<!-- 		      </ul> -->
+<!-- 		    </li> -->
+<!--           </ul> -->
+<!--           <ul class="nav navbar-nav navbar-right"> -->
+<!--             <li><a href="#">Easter Egg</a></li> -->
+<!--           </ul> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </nav> -->
