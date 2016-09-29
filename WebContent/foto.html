@@ -1,14 +1,16 @@
 <h1 class="page-header jumbotron">{{nomeAlbum}}</h1>
 <div ng-repeat="foto in fotos">
 	<div id="links">
-		<div class="col-md-2 col-xs-3">			
+		<div class="col-md-2 col-sm-3 col-xs-4">			
 			<a class="thumbnail" ng-href="{{foto.urlImagem}}" data-gallery>
-				<div style="height: auto; width: 50%; overflow: hidden;">
+				<div style="height: auto; width: 100%;">
 					<div ng-if="foto.ajustarThumbnail == 'true'">
-						<img style="margin-left: -100px; width: 100%; height: auto;" ng-src="{{foto.urlThumbnail}}" />
+						<div ng-style="{'background': 'url(' + foto.urlThumbnail + ') 50% 50% no-repeat', 'padding-bottom': '100%'}"></div>
+<!-- 						<img style="margin-left: -100px; width: 100%; height: auto;" ng-src="{{foto.urlThumbnail}}" /> -->
 					</div>
 					<div ng-if="foto.ajustarThumbnail == 'false'">
-						<img style="width: 100%; height: auto;" ng-src="{{foto.urlThumbnail}}" />
+						<div ng-style="{'background': 'url(' + foto.urlThumbnail + ') 50% 10% no-repeat', 'padding-bottom': '100%'}"></div>
+<!-- 						<img style="width: 100%; height: 100px;" ng-src="{{foto.urlThumbnail}}" /> -->
 					</div>
 				</div>
 			</a>
