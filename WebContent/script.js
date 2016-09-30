@@ -1,5 +1,5 @@
 var albuns = 0;
-var autenticado = false;
+var acesso = "";
 
 angular.module('fotosFamiliaJpModule', ['ngRoute', 'ui.bootstrap', 'ui.navbar'])
 
@@ -10,24 +10,37 @@ angular.module('fotosFamiliaJpModule', ['ngRoute', 'ui.bootstrap', 'ui.navbar'])
 	$scope.login = function(){
 		$scope.dataLoading = true;
 		
-		if( ($scope.inLogin == 'a') && ($scope.inSenha == 'a')){
-			autenticado = true;
-			document.getElementsByTagName("body")[0].className = 'ng-scope';
-			$location.path('/album');
-		}
+		url = 'http://localhost:8080/fotosfamiliajp/rs/login/' + $scope.inLogin + '/' + $scope.inSenha;
+		
+		$http.get(url).success(function(retorno){
+			this.acesso = retorno.acesso;
+			
+			if(this.acesso != ''){
+				console.log('Login efetuado');
+				document.getElementsByTagName("body")[0].className = 'ng-scope';
+				$location.path('/album');
+			}else{
+				alert('Login e/ou senha inv\u00e1lido(s)!');
+				$scope.dataLoading = false;
+				$scope.inSenha = '';
+				console.log('Login e/ou senha inv\u00e1lido(s)!');
+			}
+				
+		}).error(function(erro){
+			alert(erro);
+		})
 		
 	}
-	
 	
 })
 
 
 .controller('AlbunsController', function($scope, $http){
 	
-	urlTeste = 'http://localhost:8080/fotosfamiliajp/rs/albuns';
+	url = 'http://localhost:8080/fotosfamiliajp/rs/albuns';
 	
 	$scope.retornar = function(){
-		$http.get(urlTeste).success(function(lista){
+		$http.get(url).success(function(lista){
 			$scope.albuns = lista;
 			albuns = lista;
 			console.log('Lista de albuns preenchida');
@@ -46,19 +59,16 @@ angular.module('fotosFamiliaJpModule', ['ngRoute', 'ui.bootstrap', 'ui.navbar'])
 
 .controller('FotosController', function($scope, $http, $routeParams){
 	
-	urlTeste = 'http://localhost:8080/fotosfamiliajp/rs/fotos/' + $routeParams.albumId;
+	url = 'http://localhost:8080/fotosfamiliajp/rs/fotos/' + $routeParams.albumId;
 	
 	
 	for(var i = 0; i < albuns.length; i++){
-		
 		if(albuns[i].id == $routeParams.albumId)
 			$scope.nomeAlbum = albuns[i].nome;
-		
 	}
-		
 	
 	$scope.retornar = function(){
-		$http.get(urlTeste).success(function(lista){
+		$http.get(url).success(function(lista){
 			$scope.fotos = lista
 		}).error(function(erro){
 			alert(erro);
