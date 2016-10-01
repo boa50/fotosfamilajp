@@ -14,15 +14,22 @@ import com.google.gdata.data.photos.PhotoEntry;
 
 import controller.ConexaoController;
 import model.domain.Foto;
+import model.domain.Login;
 
-@Path("/fotos/{albumId}")
+@Path("/fotos/{albumId}/{chaveAcesso}")
 @Produces(MediaType.APPLICATION_JSON)
 public class FotoFacade {
 
-	ConexaoController conexao = new ConexaoController();
+	private ConexaoController conexao = new ConexaoController();
+	private Login login = new Login();
 
 	@GET
-	public String retornarTodosAlbuns(@PathParam("albumId") String albumId) {
+	public String retornarTodosAlbuns(
+			@PathParam("albumId") String albumId, 
+			@PathParam("chaveAcesso") String chaveAcesso) {
+		
+		if(!chaveAcesso.equals(login.getChaveAcesso()))
+			return "{\"erro\": \"se lascou\"}";
 
 		PicasawebService myService = conexao.retornaServico();
 

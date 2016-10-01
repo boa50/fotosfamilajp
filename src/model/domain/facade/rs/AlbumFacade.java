@@ -4,6 +4,7 @@ import java.net.URL;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -12,15 +13,21 @@ import com.google.gdata.data.photos.UserFeed;
 
 import controller.ConexaoController;
 import model.domain.Album;
+import model.domain.Login;
 
-@Path("/albuns")
+@Path("/albuns/{chaveAcesso}")
 @Produces(MediaType.APPLICATION_JSON)
 public class AlbumFacade {
 
-	ConexaoController conexao = new ConexaoController();
+	private ConexaoController conexao = new ConexaoController();
+	private Login login = new Login();
 	
 	@GET
-	public String retornarTodosAlbuns(){
+	public String retornarTodosAlbuns(
+			@PathParam("chaveAcesso") String chaveAcesso){
+		
+		if(!chaveAcesso.equals(login.getChaveAcesso()))
+			return "{\"erro\": \"se lascou\"}";
 		
 		String listaAlbunsJson = "";
 		

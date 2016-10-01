@@ -38,4 +38,8 @@ public class Login {
 		return "{\"acesso\": \"" + senhaCliente + "\"}";
 	}
 	
+	public String getChaveAcesso(){
+		return this.senha;
+	}
+	
 }
