@@ -52,11 +52,15 @@ public class FotoFacade {
 				if(photo.getMediaThumbnails().get(0).getWidth() > photo.getMediaThumbnails().get(0).getHeight())
 					ajustarThumbnail = true;
 				
-				listaFotosJson += new Foto(photo.getId(),
-						photo.getMediaContents().get(0).getUrl(),
-						photo.getMediaThumbnails().get(2).getUrl(),
-						ajustarThumbnail).retornaJson() + ",";
+				String urlExtensao = photo.getMediaContents().get(0).getUrl().toString().
+						substring(photo.getMediaContents().get(0).getUrl().toString().length()-4);
 				
+				if(!".mpg".equals(urlExtensao) && !".mp4".equals(urlExtensao)){
+					listaFotosJson += new Foto(photo.getId(),
+							photo.getMediaContents().get(0).getUrl(),
+							photo.getMediaThumbnails().get(2).getUrl(),
+							ajustarThumbnail).retornaJson() + ",";
+				}
 			}
 			
 			listaFotosJson = listaFotosJson.substring(0, listaFotosJson.length() - 1) + "]";

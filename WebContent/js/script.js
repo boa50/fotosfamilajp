@@ -3,9 +3,9 @@ var albuns = 0;
 var acesso = "";
 //TODO alerar para algo melhor
 //Desenvolvimento
-var urlBase = "http://localhost:8080/fotosfamiliajp";
+//var urlBase = "http://localhost:8080/fotosfamiliajp";
 //Produção
-//var urlBase = "http://familiajp-boa50.rhcloud.com";
+var urlBase = "http://familiajp-boa50.rhcloud.com";
 
 window.onhashchange = function(){
 	if( (window.location.hash == '#/album') 
