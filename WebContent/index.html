@@ -13,6 +13,8 @@
   </head>
   <body ng-app="fotosFamiliaJpModule">
   
+  	<div ng-include="'menu.html'" ng-if="exibicaoMenu"></div>
+  
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
 	<div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
 	    <div class="slides"></div>
