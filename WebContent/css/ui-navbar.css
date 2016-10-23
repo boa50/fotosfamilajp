@@ -1,3 +1,9 @@
+.scrollable-menu{
+	height: auto;
+	max-height: 200px;
+	overflow-x: hidden;
+}
+
 .dropdown-submenu {
     position: relative;
 }
