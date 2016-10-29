@@ -17,8 +17,9 @@
 		     	</a>
 		     	
 		     	<ul class="dropdown-menu scrollable-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-		       		<li role="menuitem" ng-repeat="album in albuns">
-		       			<a ng-href="./#/album/{{album.id}}">{{album.nome}}</a>
+		       		<li role="menuitem" ng-repeat="album in albuns" ng-class="sombrearAlbum(album.nome) && 'item-sombreado'">
+		       			<a ng-if="!sombrearAlbum(album.nome)" ng-href="./#/album/{{album.id}}">{{album.nome}}</a>
+		       			<a ng-if="sombrearAlbum(album.nome)" class="album-selecionado" disabled="true">{{album.nome}}</a>
 		       		</li>
 		     	</ul>
 	   		</li>

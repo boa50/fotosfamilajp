@@ -1,4 +1,17 @@
-.scrollable-menu{
+.item-sombreado {
+	background: rgba(100, 100, 100, 0.2);
+}
+
+.album-selecionado {
+	font-weight: bold !important;
+	color: black !important;
+}
+
+.album-selecionado:hover {
+	background: rgba(100, 100, 100, 0) !important;
+}
+
+.scrollable-menu {
 	height: auto;
 	max-height: 200px;
 	overflow-x: hidden;

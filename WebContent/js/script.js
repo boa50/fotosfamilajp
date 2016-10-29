@@ -87,6 +87,8 @@ angular.module('fotosFamiliaJpModule', ['ngRoute', 'ui.bootstrap', 'ui.navbar'])
 	
 	url = urlBase + '/rs/albuns/' + acesso;
 	
+	$rootScope.nomeAlbum = '';
+	
 	$rootScope.collapse = function(){
 		$rootScope.navCollapsed = !$rootScope.navCollapsed;
 	}
@@ -120,7 +122,14 @@ angular.module('fotosFamiliaJpModule', ['ngRoute', 'ui.bootstrap', 'ui.navbar'])
 	
 	for(var i = 0; i < albuns.length; i++){
 		if(albuns[i].id == $routeParams.albumId)
-			$scope.nomeAlbum = albuns[i].nome;
+			$rootScope.nomeAlbum = albuns[i].nome;
+	}
+	
+	$rootScope.sombrearAlbum = function(nomeAlbum){
+		if(nomeAlbum == $rootScope.nomeAlbum)
+			return true;
+		else
+			return false;
 	}
 	
 	var retornar = function(){
